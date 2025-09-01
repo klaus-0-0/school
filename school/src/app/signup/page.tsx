@@ -9,10 +9,13 @@ const Signup = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+
 
     const navigate = useRouter();
 
     const handleSignup = async () => {
+        setLoading(true);
         try {
             const res = await axios.post("/api/auth/signup", {
                 username,
@@ -100,8 +103,9 @@ const Signup = () => {
                                 className="w-50 cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
                                 onClick={handleSignup}
                             >
-                                Sign up
+                              {loading ? "loading..." : "sign up"}
                             </button>
+                            
                             <button
                                 className="w-50 bg-white hover:bg-gray-500 cursor-pointer text-black border border-black py-2 px-4 rounded font-medium transition"
                                 onClick={() => navigate.push("/login")}
