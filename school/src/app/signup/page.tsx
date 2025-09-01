@@ -20,6 +20,7 @@ const Signup = () => {
                 password,
             });
             localStorage.setItem("user-info", JSON.stringify(res.data.user));
+            navigate.push("/dashboard")
         } catch (err: any) {
             const errorMsg = err.response?.data?.error || "Signup failed.";
             console.error("Signup error:", errorMsg);
