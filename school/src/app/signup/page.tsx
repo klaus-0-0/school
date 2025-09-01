@@ -10,10 +10,6 @@ const Signup = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-<<<<<<< HEAD
-=======
-
->>>>>>> b15406bf2019606b60a0399bba0a81cfb9abd776
 
     const navigate = useRouter();
 
@@ -45,7 +41,6 @@ const Signup = () => {
             {/* <div className="absolute inset-0 bg-white/10 backdrop-blur-sm z-0" /> */}
 
             {/* nav Bar */}
-<<<<<<< HEAD
             <div className="w-full p-4 flex flex-wrap items-center justify-between z-10 relative bg-white/30 backdrop-blur-md">
                 {/* Left side: About */}
                 <button
@@ -60,13 +55,6 @@ const Signup = () => {
                     <button
                         className="cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
                         onClick={handleSignup}
-=======
-            <div className="w-full p-2 flex justify-end z-10 relative">
-                <div className="flex space-x-6">
-                    <button
-                        className="text-black font-bold cursor-pointer"
-                        onClick={() => navigate.push("")}
->>>>>>> b15406bf2019606b60a0399bba0a81cfb9abd776
                     >
                         Sign up
                     </button>
@@ -76,23 +64,6 @@ const Signup = () => {
                     >
                         Log in
                     </button>
-<<<<<<< HEAD
-=======
-                    <div className="flex justify-center gap-4">
-                        <button
-                            className="w-50 cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
-                            onClick={handleSignup}
-                        >
-                            Sign up
-                        </button>
-                        <button
-                            className="w-50 cursor-pointer bg-white hover:bg-gray-500 text-black border border-black py-2 px-4 rounded font-medium transition"
-                            onClick={() => navigate.push("/login")}
-                        >
-                            Log in
-                        </button>
-                    </div>
->>>>>>> b15406bf2019606b60a0399bba0a81cfb9abd776
                 </div>
             </div>
 
@@ -132,11 +103,7 @@ const Signup = () => {
                                 className="w-50 cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
                                 onClick={handleSignup}
                             >
-<<<<<<< HEAD
                                 {loading ? "loading..." : "sign up"}
-=======
-                              {loading ? "loading..." : "sign up"}
->>>>>>> b15406bf2019606b60a0399bba0a81cfb9abd776
                             </button>
                             
                             <button
