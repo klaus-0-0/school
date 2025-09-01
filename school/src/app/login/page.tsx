@@ -19,9 +19,10 @@ const Login = () => {
       const res = await axios.post("/api/auth/login", { email, password });
       console.log("res", res)
       localStorage.setItem("user-info", JSON.stringify(res.data.user));
-        router.push("/dashboard"); 
-    } catch (err: any) {
-      setError(err.response?.data?.error || "Login failed.");
+      router.push("/dashboard");
+    } catch (error) {
+      console.error(error)
+      setError("login failed")
     } finally {
       setLoading(false);
     }
@@ -37,27 +38,31 @@ const Login = () => {
       />
 
       {/* Top Navigation Bar */}
-      <nav className="w-full bg-white p-4 flex justify-end relative z-10">
-        <div className="flex space-x-6">
-          <button className="text-black font-bold mt-4 cursor-pointer" onClick={() => router.push("/")}>
-            About
+      <div className="w-full bg-white p-4 flex flex-wrap items-center justify-between gap-4 z-10">
+        {/* About Button */}
+        <button
+          className="text-black font-bold cursor-pointer"
+          onClick={() => router.push("/")}
+        >
+          About
+        </button>
+
+        {/* Auth Buttons */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
+          <button
+            className="bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded font-medium transition"
+            onClick={() => router.push("/signup")}
+          >
+            Sign up
           </button>
-          <div className="flex justify-center pt-4 gap-4">
-            <button
-              className="w-50 bg-pink-500 cursor-pointer hover:bg-pink-600 text-white py-2 px-4 rounded font-medium transition"
-              onClick={() => router.push("/signup")}
-            >
-              Sign up
-            </button>
-            <button
-              className="w-50 bg-white cursor-pointer hover:bg-gray-500 text-pink-500 border border-black py-2 px-4 rounded font-medium transition"
-              onClick={() => router.push("/login")}
-            >
-              Log in
-            </button>
-          </div>
+          <button
+            className="bg-white hover:bg-gray-500 text-pink-500 border border-black py-2 px-4 rounded font-medium transition"
+            onClick={() => router.push("/login")}
+          >
+            Log in
+          </button>
         </div>
-      </nav>
+      </div>
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center lg:justify-start p-4 relative z-10">

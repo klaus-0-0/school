@@ -9,10 +9,12 @@ const Signup = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const navigate = useRouter();
 
     const handleSignup = async () => {
+        setLoading(true);
         try {
             const res = await axios.post("/api/auth/signup", {
                 username,
@@ -20,6 +22,7 @@ const Signup = () => {
                 password,
             });
             localStorage.setItem("user-info", JSON.stringify(res.data.user));
+            navigate.push("/dashboard")
         } catch (err: any) {
             const errorMsg = err.response?.data?.error || "Signup failed.";
             console.error("Signup error:", errorMsg);
@@ -38,30 +41,31 @@ const Signup = () => {
             {/* <div className="absolute inset-0 bg-white/10 backdrop-blur-sm z-0" /> */}
 
             {/* nav Bar */}
-            <nav className="w-full p-4 flex justify-end z-10 relative">
-                <div className="flex space-x-6">
+            <div className="w-full p-4 flex flex-wrap items-center justify-between z-10 relative bg-white/30 backdrop-blur-md">
+                {/* Left side: About */}
+                <button
+                    className="text-black font-bold cursor-pointer mb-2 sm:mb-0"
+                    onClick={() => navigate.push("")}
+                >
+                    About
+                </button>
+
+                {/* Right side: Auth Buttons */}
+                <div className="flex flex-wrap gap-2 sm:gap-4">
                     <button
-                        className="text-black font-bold mt-4 cursor-pointer"
-                        onClick={() => navigate.push("")}
+                        className="cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
+                        onClick={handleSignup}
                     >
-                        About
+                        Sign up
                     </button>
-                    <div className="flex justify-center pt-4 gap-4">
-                        <button
-                            className="w-50 cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
-                            onClick={handleSignup}
-                        >
-                            Sign up
-                        </button>
-                        <button
-                            className="w-50 cursor-pointer bg-white hover:bg-gray-500 text-black border border-black py-2 px-4 rounded font-medium transition"
-                            onClick={() => navigate.push("/login")}
-                        >
-                            Log in
-                        </button>
-                    </div>
+                    <button
+                        className="cursor-pointer bg-white hover:bg-gray-500 text-black border border-black py-2 px-4 rounded font-medium transition"
+                        onClick={() => navigate.push("/login")}
+                    >
+                        Log in
+                    </button>
                 </div>
-            </nav>
+            </div>
 
             {/* Main Content */}
             <div className="flex-1 flex items-center justify-center lg:justify-start p-4 z-10 relative">
@@ -99,7 +103,7 @@ const Signup = () => {
                                 className="w-50 cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
                                 onClick={handleSignup}
                             >
-                                Sign up
+                                {loading ? "loading..." : "sign up"}
                             </button>
                             <button
                                 className="w-50 bg-white hover:bg-gray-500 cursor-pointer text-black border border-black py-2 px-4 rounded font-medium transition"
