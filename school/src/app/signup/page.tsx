@@ -42,15 +42,15 @@ const Signup = () => {
             {/* <div className="absolute inset-0 bg-white/10 backdrop-blur-sm z-0" /> */}
 
             {/* nav Bar */}
-            <nav className="w-full p-4 flex justify-end z-10 relative">
+            <div className="w-full p-2 flex justify-end z-10 relative">
                 <div className="flex space-x-6">
                     <button
-                        className="text-black font-bold mt-4 cursor-pointer"
+                        className="text-black font-bold cursor-pointer"
                         onClick={() => navigate.push("")}
                     >
                         About
                     </button>
-                    <div className="flex justify-center pt-4 gap-4">
+                    <div className="flex justify-center gap-4">
                         <button
                             className="w-50 cursor-pointer bg-black hover:bg-cyan-700 text-white py-2 px-4 rounded font-medium transition"
                             onClick={handleSignup}
@@ -65,7 +65,7 @@ const Signup = () => {
                         </button>
                     </div>
                 </div>
-            </nav>
+            </div>
 
             {/* Main Content */}
             <div className="flex-1 flex items-center justify-center lg:justify-start p-4 z-10 relative">
